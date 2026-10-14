@@ -14,16 +14,29 @@ import FloatingWhatsApp from './components/ui/FloatingWhatsApp';
  * Main Layout connected to the reactive Language Context
  */
 function MainLayout() {
-  const { data, colors } = useLanguage();
-  const { company, contact, hero, about, stats, services, gallery, process: processSteps, navLinks, footer } = data;
+  const { data = {}, colors = {} } = useLanguage();
+  const {
+    company = {},
+    contact = {},
+    hero = {},
+    about = {},
+    stats = [],
+    services = [],
+    gallery = [],
+    process: processSteps = [],
+    navLinks = [],
+    footer = {},
+  } = data || {};
 
-  const whatsappUrl = `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(contact.whatsappMessage)}`;
+  const whatsappNumber = contact?.whatsappNumber || '351913450515';
+  const whatsappMessage = contact?.whatsappMessage || 'Olá! Gostaria de pedir um orçamento gratuito.';
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const dynamicColorVariables = {
-    '--color-primary': colors.primary,
-    '--color-primary-dark': colors.primaryDark,
-    '--color-dark': colors.dark,
-    '--color-dark-lighter': colors.darkLighter,
+    '--color-primary': colors?.primary || '#F58220',
+    '--color-primary-dark': colors?.primaryDark || '#D96509',
+    '--color-dark': colors?.dark || '#14181F',
+    '--color-dark-lighter': colors?.darkLighter || '#1E2530',
   };
 
   return (

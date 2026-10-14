@@ -84,11 +84,13 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 flex items-center justify-between">
           {/* Brand Logo with High Contrast */}
           <a href="#acasa" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-lg bg-white/10 p-1">
+            <div className="w-11 h-11 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-sm flex-shrink-0">
               <img src={company.logo} alt={`${company.name} Logo`} className="w-full h-full object-contain" />
             </div>
             <div>
-              <span className="font-heading font-black text-xl text-white tracking-tight drop-shadow-sm">{company.name}</span>
+              <span className="font-heading font-black text-xl text-white tracking-tight drop-shadow-sm">
+                {company.name} {company.titleHighlight && <span className="text-primary">{company.titleHighlight}</span>}
+              </span>
               <span className="block text-[10px] tracking-[0.2em] text-primary font-bold uppercase -mt-0.5">{company.tagline}</span>
             </div>
           </a>
@@ -145,11 +147,13 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
             {/* Top Bar with Brand & Close Button */}
             <div className="flex items-center justify-between border-b border-white/10 pb-5 flex-shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 flex items-center justify-center overflow-hidden rounded-lg bg-white/10 p-1">
+                <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-sm flex-shrink-0">
                   <img src={company.logo} alt={company.name} className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <span className="font-heading font-black text-lg text-white tracking-tight">{company.name}</span>
+                  <span className="font-heading font-black text-lg text-white tracking-tight">
+                    {company.name} {company.titleHighlight && <span className="text-primary">{company.titleHighlight}</span>}
+                  </span>
                   <span className="block text-[9px] tracking-[0.2em] text-primary font-bold uppercase">{company.tagline}</span>
                 </div>
               </div>

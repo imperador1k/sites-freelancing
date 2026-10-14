@@ -59,11 +59,13 @@ export default function Footer({ company, contact, navLinks, services, footer, w
           {/* Brand info (2 cols) */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
+              <div className="w-11 h-11 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-sm flex-shrink-0">
                 <img src={company.logo} alt={company.name} className="w-full h-full object-contain" />
               </div>
               <div>
-                <span className="font-heading font-black text-xl text-white tracking-tight">{company.name}</span>
+                <span className="font-heading font-black text-xl text-white tracking-tight">
+                  {company.name} {company.titleHighlight && <span className="text-primary">{company.titleHighlight}</span>}
+                </span>
                 <span className="block text-[10px] tracking-[0.2em] text-white/50 uppercase -mt-0.5">{company.tagline}</span>
               </div>
             </div>

@@ -48,7 +48,7 @@ export default function App() {
       <Gallery gallery={gallery} whatsappUrl={whatsappUrl} />
       <Process steps={processSteps} />
       <Contact contact={contact} />
-      <FloatingWhatsApp whatsappUrl={whatsappUrl} />
+      <FloatingWhatsApp whatsappUrl={whatsappUrl} company={company} />
       <Footer
         company={company}
         contact={contact}

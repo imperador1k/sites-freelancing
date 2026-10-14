@@ -20,3 +20,6 @@ Sempre que o utilizador fornecer os dados brutos de um negócio local, executa r
 4. **Adaptação de Secções:**
    - Na secção de estatísticas, destaca os anos de experiência ou número de obras (ex: "+800 Obras Realizadas").
    - Se o cliente não tiver fotos da equipa, transforma a secção de equipa em "O Nosso Processo em 4 Passos" ou "Avaliações de Clientes".
+
+5. **Suporte Bilingue (i18n):**
+   - Preenche sempre tanto o bloco `pt` como o bloco `en` dentro de `src/config/clientData.js` para garantir que o cliente tem o site disponível em Português e em Inglês.

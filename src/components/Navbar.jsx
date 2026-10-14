@@ -1,15 +1,25 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMessageCircle, FiArrowRight, FiX } from 'react-icons/fi';
+import LanguageSwitcher from './ui/LanguageSwitcher';
+import { useLanguage } from '../context/LanguageContext';
 
 /**
  * High-End Responsive Navigation Header
- * Dark glassmorphism with high contrast typography ensures crystal-clear readability
- * over any background (dark heroes, bright photos, and light sections).
+ * Features scroll-reactive glassmorphism, bilingual language toggle,
+ * and an ultra-smooth, lock-proof mobile menu overlay.
  */
 export default function Navbar({ company, navLinks, whatsappUrl }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { lang } = useLanguage();
+
+  const ctaLabel = lang === 'pt' ? 'Pedir Orçamento' : 'Request a Quote';
+  const mobileCtaText = lang === 'pt' ? 'Pedir Orçamento Gratuito' : 'Request Free Quote (WhatsApp)';
+  const navSectionTitle = lang === 'pt' ? 'Navegação' : 'Navigation';
+  const mobileNotice = lang === 'pt'
+    ? 'Atendimento rápido por WhatsApp e chamada telefónica.'
+    : 'Quick response via WhatsApp and direct call.';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,18 +93,22 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 flex items-center justify-between">
           {/* Brand Logo with High Contrast */}
-          <a href="#acasa" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-lg bg-white/10 p-1">
+          <a href="#acasa" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-sm flex-shrink-0">
               <img src={company.logo} alt={`${company.name} Logo`} className="w-full h-full object-contain" />
             </div>
-            <div>
-              <span className="font-heading font-black text-xl text-white tracking-tight drop-shadow-sm">{company.name}</span>
-              <span className="block text-[10px] tracking-[0.2em] text-primary font-bold uppercase -mt-0.5">{company.tagline}</span>
+            <div className="min-w-0">
+              <span className="font-heading font-black text-base sm:text-xl text-white tracking-tight drop-shadow-sm whitespace-nowrap block">
+                {company.name} {company.titleHighlight && <span className="text-primary">{company.titleHighlight}</span>}
+              </span>
+              <span className="hidden sm:block text-[10px] tracking-[0.2em] text-primary font-bold uppercase -mt-0.5 truncate">
+                {company.tagline}
+              </span>
             </div>
           </a>
 
-          {/* Desktop Links with Crisp Contrast */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Links + Language Switcher + CTA */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -105,30 +119,36 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
+
+            {/* Desktop Language Switcher */}
+            <LanguageSwitcher />
+
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-0.5 group"
             >
-              <span>Pedir Orçamento</span>
+              <span>{ctaLabel}</span>
               <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
                 <FiMessageCircle className="text-xs" />
               </div>
             </a>
           </div>
 
-          {/* Mobile Hamburger Morph Button */}
-          <button
-            type="button"
-            aria-label="Abrir Menu de Navegação"
-            onClick={() => setIsMenuOpen(true)}
-            className="md:hidden flex flex-col items-center justify-center w-11 h-11 rounded-xl bg-white/10 hover:bg-white/15 transition-colors p-2.5 gap-1.5 active:scale-95"
-          >
-            <span className="w-6 h-0.5 bg-white rounded-full transition-transform" />
-            <span className="w-4 h-0.5 bg-primary self-end rounded-full transition-transform" />
-            <span className="w-6 h-0.5 bg-white rounded-full transition-transform" />
-          </button>
+          {/* Mobile Right Controls: Hamburger Button (Clean & Spacious) */}
+          <div className="md:hidden flex items-center">
+            <button
+              type="button"
+              aria-label="Abrir Menu de Navegação"
+              onClick={() => setIsMenuOpen(true)}
+              className="flex flex-col items-center justify-center w-11 h-11 rounded-xl bg-white/10 hover:bg-white/15 transition-colors p-2.5 gap-1.5 active:scale-95"
+            >
+              <span className="w-6 h-0.5 bg-white rounded-full transition-transform" />
+              <span className="w-4 h-0.5 bg-primary self-end rounded-full transition-transform" />
+              <span className="w-6 h-0.5 bg-white rounded-full transition-transform" />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -142,32 +162,37 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
             exit="exit"
             className="fixed inset-0 z-[100] h-[100dvh] w-screen bg-dark/98 backdrop-blur-2xl text-white flex flex-col justify-between p-6 sm:p-8 md:hidden overflow-hidden overscroll-none select-none"
           >
-            {/* Top Bar with Brand & Close Button */}
+            {/* Top Bar with Brand, Language Switcher & Close Button */}
             <div className="flex items-center justify-between border-b border-white/10 pb-5 flex-shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 flex items-center justify-center overflow-hidden rounded-lg bg-white/10 p-1">
+                <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-sm flex-shrink-0">
                   <img src={company.logo} alt={company.name} className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <span className="font-heading font-black text-lg text-white tracking-tight">{company.name}</span>
+                  <span className="font-heading font-black text-lg text-white tracking-tight">
+                    {company.name} {company.titleHighlight && <span className="text-primary">{company.titleHighlight}</span>}
+                  </span>
                   <span className="block text-[9px] tracking-[0.2em] text-primary font-bold uppercase">{company.tagline}</span>
                 </div>
               </div>
 
-              <button
-                type="button"
-                aria-label="Fechar Menu"
-                onClick={() => setIsMenuOpen(false)}
-                className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 flex items-center justify-center text-white transition-all"
-              >
-                <FiX className="text-2xl" />
-              </button>
+              <div className="flex items-center gap-3">
+                <LanguageSwitcher />
+                <button
+                  type="button"
+                  aria-label="Fechar Menu"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 flex items-center justify-center text-white transition-all"
+                >
+                  <FiX className="text-2xl" />
+                </button>
+              </div>
             </div>
 
             {/* Hidden-scrollbar Links Container */}
             <div className="flex flex-col gap-4 py-6 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-contain my-auto">
               <span className="text-[10px] font-heading font-bold uppercase tracking-[0.3em] text-primary">
-                Navegação
+                {navSectionTitle}
               </span>
               {navLinks.map((link, idx) => (
                 <motion.button
@@ -196,13 +221,13 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
               >
                 <div className="flex items-center gap-3">
                   <FiMessageCircle className="text-lg" />
-                  <span>Pedir Orçamento Gratuito</span>
+                  <span>{mobileCtaText}</span>
                 </div>
                 <FiArrowRight className="text-base" />
               </a>
 
               <p className="text-[11px] text-white/50 text-center">
-                Atendimento rápido por WhatsApp e chamada telefónica.
+                {mobileNotice}
               </p>
             </motion.div>
           </motion.div>

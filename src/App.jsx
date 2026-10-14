@@ -1,4 +1,4 @@
-import { clientData } from './config/clientData';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,23 +11,11 @@ import Footer from './components/Footer';
 import FloatingWhatsApp from './components/ui/FloatingWhatsApp';
 
 /**
- * Main Application Orchestrator
- * Connects centralized client configuration to atomic section components
+ * Main Layout connected to the reactive Language Context
  */
-export default function App() {
-  const {
-    company,
-    contact,
-    hero,
-    about,
-    stats,
-    services,
-    gallery,
-    process: processSteps,
-    navLinks,
-    footer,
-    colors,
-  } = clientData;
+function MainLayout() {
+  const { data, colors } = useLanguage();
+  const { company, contact, hero, about, stats, services, gallery, process: processSteps, navLinks, footer } = data;
 
   const whatsappUrl = `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(contact.whatsappMessage)}`;
 
@@ -48,7 +36,7 @@ export default function App() {
       <Gallery gallery={gallery} whatsappUrl={whatsappUrl} />
       <Process steps={processSteps} />
       <Contact contact={contact} />
-      <FloatingWhatsApp whatsappUrl={whatsappUrl} />
+      <FloatingWhatsApp whatsappUrl={whatsappUrl} company={company} />
       <Footer
         company={company}
         contact={contact}
@@ -58,5 +46,16 @@ export default function App() {
         whatsappUrl={whatsappUrl}
       />
     </div>
+  );
+}
+
+/**
+ * Root Application Component with Global Language Provider
+ */
+export default function App() {
+  return (
+    <LanguageProvider>
+      <MainLayout />
+    </LanguageProvider>
   );
 }

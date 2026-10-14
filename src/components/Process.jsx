@@ -1,27 +1,38 @@
 import { motion } from 'framer-motion';
 import Reveal from './ui/Reveal';
+import { useLanguage } from '../context/LanguageContext';
 
 /**
- * 4-Step Process Section replacing team members with clear execution stages
+ * 4-Step Process Section with bilingual headings and descriptions
  */
 export default function Process({ steps }) {
+  const { lang } = useLanguage();
+
+  const isPt = lang === 'pt';
+  const badge = isPt ? 'Como Trabalhamos' : 'How We Work';
+  const titlePre = isPt ? 'Como Funciona o' : 'How Our';
+  const titleHighlight = isPt ? 'Nosso Processo' : 'Process Works';
+  const subtitle = isPt
+    ? 'Um método simples, transparente e sem surpresas para que a sua obra avance com total tranquilidade.'
+    : 'A clear, transparent, and structured milestone methodology ensuring total peace of mind.';
+
   return (
     <section id="processo" className="py-24 md:py-32 bg-cream relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
         <div className="text-center mb-16">
           <Reveal>
             <span className="inline-block text-primary font-heading font-bold text-sm tracking-[0.2em] uppercase mb-4">
-              Como Trabalhamos
+              {badge}
             </span>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-dark mb-6">
-              Como Funciona o <span className="text-primary">Nosso Processo</span>
+              {titlePre} <span className="text-primary">{titleHighlight}</span>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-warm-gray text-lg max-w-2xl mx-auto">
-              Um método simples, transparente e sem surpresas para que a sua obra avance com total tranquilidade.
+              {subtitle}
             </p>
           </Reveal>
         </div>

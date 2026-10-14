@@ -30,6 +30,7 @@ This repository utilizes an **isolated branch multi-tenant architecture**. The `
 | :--- | :--- | :--- | :--- | :--- |
 | **`main`** | **Core Master Blueprint** | Architecture & Contractor Base | Global / Template | 🟢 **Stable v2.0** |
 | [`King-Construções-Lda`](https://github.com/imperador1k/sites-freelancing/tree/King-Constru%C3%A7%C3%B5es-Lda) | **King Construções Lda.** | Civil Construction & Turnkey Renovations | Lisbon, Algarve & Portugal | 🚀 **Live Production** |
+| [`MDIAS`](https://github.com/imperador1k/sites-freelancing/tree/MDIAS) | **M Dias Remodelações** | Interior Renovations & Bathrooms (Alvará 139056-PAR) | Castelo Branco & Beira Baixa | 🚀 **Live Production** |
 
 ---
 

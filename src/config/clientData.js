@@ -11,11 +11,11 @@ export const clientData = {
     darkLighter: '#1C2433',    // Tom secundário ardósia
   },
   contact: {
-    phone: '+351 960 000 000',
-    phoneDisplay: '+351 960 000 000',
+    phone: '+351 912 777 660',
+    phoneDisplay: '+351 912 777 660',
     email: 'contacto@mdiasremodelacoes.pt',
     address: 'Castelo Branco, Beira Baixa, Portugal',
-    whatsappNumber: '351960000000',
+    whatsappNumber: '351912777660',
     whatsappMessage: 'Olá M Dias Remodelações, vi o vosso site e gostaria de pedir um orçamento gratuito.',
     workingHours: [
       { days: 'Segunda – Sexta', hours: '08:00 – 19:00' },
@@ -24,11 +24,11 @@ export const clientData = {
     ],
   },
   shared: {
-    logo: '/logo.png',
-    phone: '+351 960 000 000',
-    phoneDisplay: '+351 960 000 000',
+    logo: '/mdias-logo.png',
+    phone: '+351 912 777 660',
+    phoneDisplay: '+351 912 777 660',
     email: 'contacto@mdiasremodelacoes.pt',
-    whatsappNumber: '351960000000',
+    whatsappNumber: '351912777660',
   },
 
   // ═══════════════════════════════════════════════
@@ -41,14 +41,14 @@ export const clientData = {
       titleHighlight: 'REMODELAÇÕES',
       tagline: 'Alvará IMPIC 139056-PAR · Castelo Branco',
       slogan: 'Paixão pelas remodelações, rigor técnico e modernização de habitações',
-      logo: '/logo.png',
+      logo: '/mdias-logo.png',
     },
     contact: {
-      phone: '+351 960 000 000',
-      phoneDisplay: '+351 960 000 000',
+      phone: '+351 912 777 660',
+      phoneDisplay: '+351 912 777 660',
       email: 'contacto@mdiasremodelacoes.pt',
       address: 'Castelo Branco, Beira Baixa, Portugal',
-      whatsappNumber: '351960000000',
+      whatsappNumber: '351912777660',
       whatsappMessage: 'Olá M Dias Remodelações, vi o vosso site e gostaria de pedir um orçamento gratuito.',
       workingHours: [
         { days: 'Segunda – Sexta', hours: '08:00 – 19:00' },
@@ -173,14 +173,14 @@ export const clientData = {
       titleHighlight: 'RENOVATIONS',
       tagline: 'IMPIC License 139056-PAR · Castelo Branco',
       slogan: 'Passionate interior renovations, technical precision, and modern living spaces',
-      logo: '/logo.png',
+      logo: '/mdias-logo.png',
     },
     contact: {
-      phone: '+351 960 000 000',
-      phoneDisplay: '+351 960 000 000',
+      phone: '+351 912 777 660',
+      phoneDisplay: '+351 912 777 660',
       email: 'contact@mdiasrenovations.com',
       address: 'Castelo Branco, Beira Baixa, Portugal',
-      whatsappNumber: '351960000000',
+      whatsappNumber: '351912777660',
       whatsappMessage: 'Hello M.Dias Renovations, I visited your website and would like to request a free quote.',
       workingHours: [
         { days: 'Monday – Friday', hours: '08:00 – 19:00' },

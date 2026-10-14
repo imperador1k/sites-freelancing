@@ -8,8 +8,16 @@ import { useLanguage } from '../context/LanguageContext';
  * Contact Section with interactive quote form and direct business info
  * Fully adapts dynamically to the active language (PT/EN).
  */
-export default function Contact({ contact }) {
+export default function Contact({ contact = {} }) {
   const { lang } = useLanguage();
+  const safeContact = {
+    phone: '+351 913 450 515',
+    phoneDisplay: '+351 913 450 515',
+    email: 'contacto@kingconstrucoes.pt',
+    address: 'Portugal',
+    workingHours: [],
+    ...contact,
+  };
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
   const [formSent, setFormSent] = useState(false);
 
@@ -165,8 +173,8 @@ export default function Contact({ contact }) {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-dark mb-1">{t.phoneTitle}</h4>
-                    <a href={`tel:${contact.phone}`} className="text-warm-gray hover:text-primary transition-colors text-sm font-semibold">
-                      {contact.phoneDisplay}
+                    <a href={`tel:${safeContact.phone}`} className="text-warm-gray hover:text-primary transition-colors text-sm font-semibold">
+                      {safeContact.phoneDisplay}
                     </a>
                   </div>
                 </div>
@@ -180,8 +188,8 @@ export default function Contact({ contact }) {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-dark mb-1">{t.emailTitle}</h4>
-                    <a href={`mailto:${contact.email}`} className="text-warm-gray hover:text-primary transition-colors text-sm font-semibold">
-                      {contact.email}
+                    <a href={`mailto:${safeContact.email}`} className="text-warm-gray hover:text-primary transition-colors text-sm font-semibold">
+                      {safeContact.email}
                     </a>
                   </div>
                 </div>
@@ -195,7 +203,7 @@ export default function Contact({ contact }) {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-dark mb-1">{t.locationTitle}</h4>
-                    <p className="text-warm-gray text-sm leading-relaxed">{contact.address}</p>
+                    <p className="text-warm-gray text-sm leading-relaxed">{safeContact.address}</p>
                   </div>
                 </div>
               </div>
@@ -204,7 +212,7 @@ export default function Contact({ contact }) {
               <div className="bg-gradient-to-br from-dark to-dark-lighter rounded-2xl p-6 text-white">
                 <h4 className="font-heading font-bold mb-3">{t.hoursTitle}</h4>
                 <div className="space-y-2 text-sm">
-                  {contact.workingHours.map((schedule, idx) => (
+                  {(safeContact.workingHours || []).map((schedule, idx) => (
                     <div key={idx} className="flex justify-between text-white/70">
                       <span>{schedule.days}</span>
                       <span className="text-white font-medium">{schedule.hours}</span>

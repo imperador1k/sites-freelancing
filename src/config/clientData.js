@@ -40,6 +40,19 @@ export const clientData = {
       slogan: 'Construção de excelência, obras sólidas e cumprimento rigoroso de prazos.',
       logo: '/logo.png',
     },
+    contact: {
+      phone: '+351 912 345 678',
+      phoneDisplay: '+351 912 345 678',
+      email: 'contacto@empresa-exemplo.pt',
+      address: 'Lisboa e todo o território nacional',
+      whatsappNumber: '351912345678',
+      whatsappMessage: 'Olá! Vi o vosso site e gostaria de pedir um orçamento gratuito.',
+      workingHours: [
+        { days: 'Segunda – Sexta', hours: '08:00 – 19:00' },
+        { days: 'Sábado', hours: '09:00 – 14:00' },
+        { days: 'Domingo', hours: 'Encerrado' },
+      ],
+    },
     navLinks: [
       { label: 'Início', href: '#acasa' },
       { label: 'Sobre Nós', href: '#despre' },
@@ -114,6 +127,19 @@ export const clientData = {
       tagline: 'Civil Construction & Turnkey Renovations',
       slogan: 'Excellence in construction, durable craftsmanship, and strict schedule adherence.',
       logo: '/logo.png',
+    },
+    contact: {
+      phone: '+351 912 345 678',
+      phoneDisplay: '+351 912 345 678',
+      email: 'contact@example-contractor.com',
+      address: 'Lisbon and nationwide throughout Portugal',
+      whatsappNumber: '351912345678',
+      whatsappMessage: 'Hello! I saw your website and would like to request a free quote.',
+      workingHours: [
+        { days: 'Monday – Friday', hours: '08:00 – 19:00' },
+        { days: 'Saturday', hours: '09:00 – 14:00' },
+        { days: 'Sunday', hours: 'Closed' },
+      ],
     },
     navLinks: [
       { label: 'Home', href: '#acasa' },

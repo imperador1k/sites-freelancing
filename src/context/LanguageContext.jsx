@@ -22,14 +22,24 @@ export function LanguageProvider({ children }) {
     }
   }, [lang]);
 
-  const activeData = clientData[lang] || clientData.pt;
+  const langData = clientData[lang] || clientData.pt || {};
+  const globalContact = clientData.contact || clientData.shared || {};
+  const resolvedContact = {
+    ...globalContact,
+    ...(langData.contact || {}),
+  };
+
+  const activeData = {
+    ...langData,
+    contact: resolvedContact,
+  };
 
   const value = {
     lang,
     setLang,
     data: activeData,
-    colors: clientData.colors,
-    shared: clientData.shared,
+    colors: clientData.colors || {},
+    shared: clientData.shared || {},
   };
 
   return (

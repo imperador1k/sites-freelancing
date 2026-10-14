@@ -1,11 +1,23 @@
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import Reveal from './ui/Reveal';
+import { useLanguage } from '../context/LanguageContext';
 
 /**
  * Gallery Section showcasing recent real works/portfolio
  */
 export default function Gallery({ gallery, whatsappUrl }) {
+  const { lang } = useLanguage();
+
+  const isPt = lang === 'pt';
+  const badge = isPt ? 'Portfólio Real' : 'Real Portfolio';
+  const titlePre = isPt ? 'Galeria de' : 'Recent Works';
+  const titleHighlight = isPt ? 'Obras Recentes' : 'Gallery';
+  const subtitle = isPt
+    ? 'Conheça alguns dos nossos trabalhos executados com materiais certificados, acabamentos impecáveis e clientes satisfeitos.'
+    : 'Discover our recent construction and rehabilitation projects with verified structural quality and premium finishes.';
+  const quotePrompt = isPt ? 'Quero uma obra semelhante' : 'Inquire about similar work';
+
   return (
     <section id="obras" className="py-24 md:py-32 bg-dark relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(230,59,46,0.12),transparent_55%)]" />
@@ -15,17 +27,17 @@ export default function Gallery({ gallery, whatsappUrl }) {
         <div className="text-center mb-16">
           <Reveal>
             <span className="inline-block text-primary font-heading font-bold text-sm tracking-[0.2em] uppercase mb-4">
-              Portfólio Real
+              {badge}
             </span>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-white mb-6">
-              Galeria de <span className="text-primary">Obras Recentes</span>
+              {titlePre} <span className="text-primary">{titleHighlight}</span>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Conheça alguns dos nossos trabalhos executados com materiais certificados, acabamentos impecáveis e clientes satisfeitos.
+              {subtitle}
             </p>
           </Reveal>
         </div>
@@ -59,7 +71,7 @@ export default function Gallery({ gallery, whatsappUrl }) {
                     rel="noopener noreferrer"
                     className="mt-4 inline-flex items-center gap-1.5 text-primary text-xs font-semibold uppercase tracking-wider hover:underline"
                   >
-                    Quero uma obra semelhante <FiArrowRight />
+                    {quotePrompt} <FiArrowRight />
                   </a>
                 </div>
               </motion.div>

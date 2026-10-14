@@ -1,10 +1,29 @@
 import { FiPhone, FiMail, FiMapPin, FiMessageCircle, FiArrowUp, FiCheckCircle } from 'react-icons/fi';
+import { useLanguage } from '../context/LanguageContext';
 
 /**
- * High-End Footer Component
+ * High-End Bilingual Footer Component
  * Includes high-converting pre-footer CTA banner, structured contacts, and back-to-top interaction.
  */
 export default function Footer({ company, contact, navLinks, services, footer, whatsappUrl }) {
+  const { lang } = useLanguage();
+  const isPt = lang === 'pt';
+
+  const t = {
+    badge: isPt ? 'Orçamento Sem Compromisso' : 'No-Obligation Quote',
+    bannerTitle: isPt ? 'Pronto para dar vida à sua obra?' : 'Ready to bring your project to life?',
+    bannerDesc: isPt
+      ? 'Fale diretamente connosco e obtenha aconselhamento técnico personalizado e transparente para o seu projeto.'
+      : 'Contact us directly for personalized, transparent technical guidance for your construction project in Portugal.',
+    whatsappBtn: isPt ? 'Falar no WhatsApp' : 'Chat on WhatsApp',
+    callBtn: isPt ? 'Ligar Agora' : 'Call Now',
+    trustBadge: isPt ? 'Empresa Especializada em Portugal' : 'Certified Contractor in Portugal',
+    navTitle: isPt ? 'Navegação' : 'Navigation',
+    servicesTitle: isPt ? 'Serviços' : 'Services',
+    contactTitle: isPt ? 'Contactos' : 'Contact Us',
+    topBtn: isPt ? 'Topo' : 'Top',
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -22,13 +41,13 @@ export default function Footer({ company, contact, navLinks, services, footer, w
           <div className="relative z-10 max-w-xl text-center lg:text-left">
             <div className="inline-flex items-center gap-2 text-primary font-heading font-bold text-xs uppercase tracking-[0.2em] mb-3">
               <FiCheckCircle className="text-sm" />
-              <span>Orçamento Sem Compromisso</span>
+              <span>{t.badge}</span>
             </div>
             <h3 className="font-heading font-black text-3xl sm:text-4xl text-white mb-3">
-              Pronto para dar vida à sua obra?
+              {t.bannerTitle}
             </h3>
             <p className="text-white/60 text-sm sm:text-base leading-relaxed">
-              Fale diretamente connosco e obtenha aconselhamento técnico personalizado e transparente para o seu projeto.
+              {t.bannerDesc}
             </p>
           </div>
 
@@ -40,7 +59,7 @@ export default function Footer({ company, contact, navLinks, services, footer, w
               className="inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-heading font-bold px-7 py-3.5 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 group text-sm"
             >
               <FiMessageCircle className="text-lg group-hover:rotate-12 transition-transform" />
-              <span>Falar no WhatsApp</span>
+              <span>{t.whatsappBtn}</span>
             </a>
             {contact?.phone && (
               <a
@@ -48,7 +67,7 @@ export default function Footer({ company, contact, navLinks, services, footer, w
                 className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white font-heading font-semibold px-6 py-3.5 rounded-full border border-white/20 transition-all duration-300 hover:-translate-y-0.5 text-sm"
               >
                 <FiPhone className="text-base text-primary" />
-                <span>Ligar Agora</span>
+                <span>{t.callBtn}</span>
               </a>
             )}
           </div>
@@ -76,14 +95,14 @@ export default function Footer({ company, contact, navLinks, services, footer, w
 
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white/70">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span>Empresa Especializada em Portugal</span>
+              <span>{t.trustBadge}</span>
             </div>
           </div>
 
           {/* Quick links */}
           <div>
             <h5 className="font-heading font-bold text-white text-xs uppercase tracking-[0.2em] mb-5 text-primary">
-              Navegação
+              {t.navTitle}
             </h5>
             <ul className="space-y-3">
               {navLinks.map((link) => (
@@ -102,7 +121,7 @@ export default function Footer({ company, contact, navLinks, services, footer, w
           {/* Services */}
           <div>
             <h5 className="font-heading font-bold text-white text-xs uppercase tracking-[0.2em] mb-5 text-primary">
-              Serviços
+              {t.servicesTitle}
             </h5>
             <ul className="space-y-3">
               {services.slice(0, 5).map((service, i) => (
@@ -121,7 +140,7 @@ export default function Footer({ company, contact, navLinks, services, footer, w
           {/* Direct Contacts */}
           <div>
             <h5 className="font-heading font-bold text-white text-xs uppercase tracking-[0.2em] mb-5 text-primary">
-              Contactos
+              {t.contactTitle}
             </h5>
             <ul className="space-y-3 text-sm text-white/60">
               {contact?.phoneDisplay && (
@@ -165,7 +184,7 @@ export default function Footer({ company, contact, navLinks, services, footer, w
               onClick={scrollToTop}
               className="inline-flex items-center gap-2 text-xs font-semibold text-white/60 hover:text-primary transition-colors cursor-pointer group"
             >
-              <span>Topo</span>
+              <span>{t.topBtn}</span>
               <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
                 <FiArrowUp className="text-xs" />
               </div>

@@ -1,20 +1,30 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiArrowDown, FiMessageCircle, FiCheckCircle } from 'react-icons/fi';
+import { useLanguage } from '../context/LanguageContext';
 
 /**
- * High-End Parallax Hero Section
- * Implements editorial typography, nested trust badges, button-in-button CTAs,
- * and an architectural vertical scroll indicator.
+ * High-End Parallax Hero Section with bilingual i18n support
  */
 export default function Hero({ hero, whatsappUrl }) {
   const heroRef = useRef(null);
+  const { lang } = useLanguage();
+  const isPt = lang === 'pt';
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start'],
   });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const trustCardTitle = isPt ? 'Garantia e Rigor' : 'Guaranteed Rigor';
+  const trustCardDesc = isPt
+    ? 'Mais de 800 obras concluídas com materiais certificados e acompanhamento técnico dedicado.'
+    : 'Over 800 completed projects with certified materials and dedicated engineering oversight.';
+  const trustItem1 = isPt ? 'Orçamento Gratuito em 24h' : 'Free 24h Quote Proposal';
+  const trustItem2 = isPt ? 'Equipas Especializadas' : 'Specialized Engineering Teams';
+  const scrollLabel = isPt ? 'Explorar' : 'Explore';
 
   return (
     <section id="acasa" ref={heroRef} className="relative min-h-[100dvh] flex items-center overflow-hidden">
@@ -131,20 +141,20 @@ export default function Hero({ hero, whatsappUrl }) {
                 </div>
 
                 <div>
-                  <h4 className="font-heading font-bold text-white text-base">Garantia e Rigor</h4>
+                  <h4 className="font-heading font-bold text-white text-base">{trustCardTitle}</h4>
                   <p className="text-white/60 text-xs mt-1 leading-relaxed">
-                    Mais de 450 obras entregues com materiais certificados e acompanhamento técnico dedicado.
+                    {trustCardDesc}
                   </p>
                 </div>
 
                 <div className="pt-2 border-t border-white/10 space-y-2 text-xs">
                   <div className="flex items-center gap-2 text-white/80">
                     <FiCheckCircle className="text-primary text-sm flex-shrink-0" />
-                    <span>Orçamento Gratuito em 24h</span>
+                    <span>{trustItem1}</span>
                   </div>
                   <div className="flex items-center gap-2 text-white/80">
                     <FiCheckCircle className="text-primary text-sm flex-shrink-0" />
-                    <span>Equipas Especializadas</span>
+                    <span>{trustItem2}</span>
                   </div>
                 </div>
               </div>
@@ -161,7 +171,7 @@ export default function Hero({ hero, whatsappUrl }) {
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 pointer-events-none"
       >
         <span className="text-[10px] font-heading font-bold uppercase tracking-[0.3em] text-white/40">
-          Explorar
+          {scrollLabel}
         </span>
         <div className="w-[1.5px] h-11 bg-white/20 rounded-full overflow-hidden relative">
           <motion.div

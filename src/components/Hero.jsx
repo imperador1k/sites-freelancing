@@ -18,12 +18,12 @@ export default function Hero({ hero, whatsappUrl }) {
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const trustCardTitle = isPt ? 'Garantia e Rigor' : 'Guaranteed Rigor';
-  const trustCardDesc = isPt
+  const trustCardTitle = hero?.trustCard?.title || (isPt ? 'Garantia e Rigor' : 'Guaranteed Rigor');
+  const trustCardDesc = hero?.trustCard?.desc || (isPt
     ? 'Mais de 800 obras concluídas com materiais certificados e acompanhamento técnico dedicado.'
-    : 'Over 800 completed projects with certified materials and dedicated engineering oversight.';
-  const trustItem1 = isPt ? 'Orçamento Gratuito em 24h' : 'Free 24h Quote Proposal';
-  const trustItem2 = isPt ? 'Equipas Especializadas' : 'Specialized Engineering Teams';
+    : 'Over 800 completed projects with certified materials and dedicated engineering oversight.');
+  const trustItem1 = hero?.trustCard?.item1 || (isPt ? 'Orçamento Gratuito em 24h' : 'Free 24h Quote Proposal');
+  const trustItem2 = hero?.trustCard?.item2 || (isPt ? 'Equipas Especializadas' : 'Specialized Engineering Teams');
   const scrollLabel = isPt ? 'Explorar' : 'Explore';
 
   return (

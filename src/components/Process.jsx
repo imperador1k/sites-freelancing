@@ -5,16 +5,16 @@ import { useLanguage } from '../context/LanguageContext';
 /**
  * 4-Step Process Section with bilingual headings and descriptions
  */
-export default function Process({ steps }) {
+export default function Process({ steps, processConfig }) {
   const { lang } = useLanguage();
 
   const isPt = lang === 'pt';
-  const badge = isPt ? 'Como Trabalhamos' : 'How We Work';
-  const titlePre = isPt ? 'Como Funciona o' : 'How Our';
-  const titleHighlight = isPt ? 'Nosso Processo' : 'Process Works';
-  const subtitle = isPt
+  const badge = processConfig?.badge || (isPt ? 'Como Trabalhamos' : 'How We Work');
+  const titlePre = processConfig?.titlePre || (isPt ? 'Como Funciona o' : 'How Our');
+  const titleHighlight = processConfig?.titleHighlight || (isPt ? 'Nosso Processo' : 'Process Works');
+  const subtitle = processConfig?.subtitle || (isPt
     ? 'Um método simples, transparente e sem surpresas para que a sua obra avance com total tranquilidade.'
-    : 'A clear, transparent, and structured milestone methodology ensuring total peace of mind.';
+    : 'A clear, transparent, and structured milestone methodology ensuring total peace of mind.');
 
   return (
     <section id="processo" className="py-24 md:py-32 bg-cream relative overflow-hidden">

@@ -23,7 +23,9 @@ function MainLayout() {
     stats = [],
     services = [],
     gallery = [],
+    gallerySection = {},
     process: processSteps = [],
+    processSection = {},
     navLinks = [],
     footer = {},
   } = data || {};
@@ -46,8 +48,8 @@ function MainLayout() {
       <About about={about} />
       <Stats stats={stats} />
       <Services services={services} whatsappUrl={whatsappUrl} />
-      <Gallery gallery={gallery} whatsappUrl={whatsappUrl} />
-      <Process steps={processSteps} />
+      <Gallery gallery={gallery} galleryConfig={gallerySection} whatsappUrl={whatsappUrl} />
+      <Process steps={processSteps} processConfig={processSection} />
       <Contact contact={contact} />
       <FloatingWhatsApp whatsappUrl={whatsappUrl} company={company} />
       <Footer

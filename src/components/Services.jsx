@@ -7,17 +7,18 @@ import { useLanguage } from '../context/LanguageContext';
  * Services Grid Section showing contractor specialties
  */
 export default function Services({ services, whatsappUrl }) {
-  const { lang } = useLanguage();
+  const { lang, data } = useLanguage();
+  const sec = data?.servicesSection || {};
 
   const isPt = lang === 'pt';
-  const badge = isPt ? 'O Que Fazemos' : 'Our Specialties';
-  const titlePre = isPt ? 'Serviços de' : 'Excellence in';
-  const titleHighlight = isPt ? 'Excelência' : 'Construction';
-  const titlePost = isPt ? 'Para Qualquer Obra' : 'For Any Project Scale';
-  const subtitle = isPt
-    ? 'Oferecemos soluções completas em construção civil, reabilitação e remodelações com garantia de rigor e satisfação.'
-    : 'We deliver turnkey civil construction, building restoration, and luxury renovations with strict standards.';
-  const ctaLabel = isPt ? 'Pedir Orçamento' : 'Request Quote';
+  const badge = sec.badge || (isPt ? 'Áreas de Especialização' : 'Practice Areas');
+  const titlePre = sec.titlePre || (isPt ? 'Serviços de' : 'Legal Services of');
+  const titleHighlight = sec.titleHighlight || (isPt ? 'Excelência' : 'Excellence');
+  const titlePost = sec.titlePost || (isPt ? 'Para Particulares & Empresas' : 'For Individuals & Companies');
+  const subtitle = sec.subtitle || (isPt
+    ? 'Apoio jurídico especializado, rigor técnico e soluções estratégicas com total confidencialidade e proximidade.'
+    : 'Specialized legal counsel, technical precision, and strategic solutions with strict confidentiality.');
+  const ctaLabel = sec.ctaLabel || (isPt ? 'Agendar Consulta' : 'Book Consultation');
 
   return (
     <section id="servicos" className="py-24 md:py-32 bg-steel relative overflow-hidden">

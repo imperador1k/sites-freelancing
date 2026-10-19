@@ -7,16 +7,17 @@ import { useLanguage } from '../context/LanguageContext';
  * Gallery Section showcasing recent real works/portfolio
  */
 export default function Gallery({ gallery, whatsappUrl }) {
-  const { lang } = useLanguage();
+  const { lang, data } = useLanguage();
+  const sec = data?.gallerySection || {};
 
   const isPt = lang === 'pt';
-  const badge = isPt ? 'Portfólio Real' : 'Real Portfolio';
-  const titlePre = isPt ? 'Galeria de' : 'Recent Works';
-  const titleHighlight = isPt ? 'Obras Recentes' : 'Gallery';
-  const subtitle = isPt
-    ? 'Conheça alguns dos nossos trabalhos executados com materiais certificados, acabamentos impecáveis e clientes satisfeitos.'
-    : 'Discover our recent construction and rehabilitation projects with verified structural quality and premium finishes.';
-  const quotePrompt = isPt ? 'Quero uma obra semelhante' : 'Inquire about similar work';
+  const badge = sec.badge || (isPt ? 'Instalações & Prática' : 'Facilities & Practice');
+  const titlePre = sec.titlePre || (isPt ? 'Conheça o Nosso' : 'Explore Our');
+  const titleHighlight = sec.titleHighlight || (isPt ? 'Escritório' : 'Practice');
+  const subtitle = sec.subtitle || (isPt
+    ? 'Espaços modernos e reservados, pensados para garantir total sigilo, conforto e rigor no tratamento das suas questões jurídicas.'
+    : 'Modern, private facilities designed to ensure strict confidentiality, comfort, and professional rigor in handling your legal affairs.');
+  const quotePrompt = sec.quotePrompt || (isPt ? 'Saber mais sobre este serviço' : 'Learn more about this practice');
 
   return (
     <section id="obras" className="py-24 md:py-32 bg-white relative overflow-hidden border-t border-black/5">

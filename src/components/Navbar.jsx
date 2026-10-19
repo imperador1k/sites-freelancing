@@ -14,8 +14,8 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { lang } = useLanguage();
 
-  const ctaLabel = lang === 'pt' ? 'Pedir Orçamento' : 'Request a Quote';
-  const mobileCtaText = lang === 'pt' ? 'Pedir Orçamento Gratuito' : 'Request Free Quote (WhatsApp)';
+  const ctaLabel = company?.navCta || (lang === 'pt' ? 'Agendar Consulta' : 'Book Consultation');
+  const mobileCtaText = company?.mobileNavCta || (lang === 'pt' ? 'Agendar Consulta Jurídica' : 'Book Legal Consultation');
   const navSectionTitle = lang === 'pt' ? 'Navegação' : 'Navigation';
   const mobileNotice = lang === 'pt'
     ? 'Atendimento rápido por WhatsApp e chamada telefónica.'

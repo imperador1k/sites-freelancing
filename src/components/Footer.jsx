@@ -10,16 +10,16 @@ export default function Footer({ company, contact, navLinks, services, footer, w
   const isPt = lang === 'pt';
 
   const t = {
-    badge: isPt ? 'Orçamento Sem Compromisso' : 'No-Obligation Quote',
-    bannerTitle: isPt ? 'Pronto para dar vida à sua obra?' : 'Ready to bring your project to life?',
-    bannerDesc: isPt
-      ? 'Fale diretamente connosco e obtenha aconselhamento técnico personalizado e transparente para o seu projeto.'
-      : 'Contact us directly for personalized, transparent technical guidance for your construction project in Portugal.',
+    badge: footer?.bannerBadge || (isPt ? 'Consulta Jurídica Confidencial' : 'Confidential Legal Consultation'),
+    bannerTitle: footer?.bannerTitle || (isPt ? 'Precisa de apoio jurídico para a sua situação?' : 'Need dedicated legal counsel for your matter?'),
+    bannerDesc: footer?.bannerDesc || (isPt
+      ? 'Fale diretamente com o nosso escritório e obtenha aconselhamento jurídico dedicado, rigoroso e transparente em Vila Nova de Gaia.'
+      : 'Contact our practice directly for dedicated, rigorous, and transparent legal counsel in Vila Nova de Gaia and Porto.'),
     whatsappBtn: isPt ? 'Falar no WhatsApp' : 'Chat on WhatsApp',
     callBtn: isPt ? 'Ligar Agora' : 'Call Now',
-    trustBadge: isPt ? 'Empresa Especializada em Portugal' : 'Certified Contractor in Portugal',
+    trustBadge: footer?.trustBadge || (isPt ? 'Advocacia & Consultoria Jurídica em Gaia' : 'Law Firm & Legal Consultancy in Gaia'),
     navTitle: isPt ? 'Navegação' : 'Navigation',
-    servicesTitle: isPt ? 'Serviços' : 'Services',
+    servicesTitle: isPt ? 'Áreas de Atuação' : 'Practice Areas',
     contactTitle: isPt ? 'Contactos' : 'Contact Us',
     topBtn: isPt ? 'Topo' : 'Top',
   };

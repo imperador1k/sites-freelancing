@@ -35,20 +35,20 @@ export default function FloatingWhatsApp({ whatsappUrl, company }) {
       ? `Olá! Fale com a equipa da ${company?.name || 'empresa'} no WhatsApp.`
       : `Hello! Chat with ${company?.name || 'our team'} on WhatsApp.`,
     onlineStatus: isPt ? 'Online agora · Resposta rápida' : 'Online now · Quick response',
-    aiGreeting: isPt
-      ? `Olá! 👋 Sou o assistente virtual da ${company?.name || 'nossa equipa'}. Como podemos ajudar o seu projeto hoje?`
-      : `Hello! 👋 I am the virtual assistant for ${company?.name || 'our team'}. How can we assist you today?`,
-    quickOptions: isPt
+    aiGreeting: company?.aiGreeting || (isPt
+      ? `Olá! 👋 Sou o assistente virtual da ${company?.name || 'nossa equipa'}. Como podemos ajudar com a sua questão jurídica hoje?`
+      : `Hello! 👋 I am the virtual assistant for ${company?.name || 'our team'}. How can we assist you with your legal matters today?`),
+    quickOptions: company?.whatsappOptions || (isPt
       ? [
-          { label: '📋 Pedir Orçamento Gratuito', msg: 'Olá! Gostaria de pedir um orçamento gratuito para um projeto.' },
-          { label: '⏱️ Consultar Prazos & Valores', msg: 'Olá! Gostaria de saber prazos estimados e condições de pagamento.' },
-          { label: '💬 Falar com um Especialista', msg: 'Olá! Gostaria de esclarecer dúvidas sobre os vossos serviços.' },
+          { label: '⚖️ Agendar Consulta Jurídica', msg: `Olá Dra. Bebiana dos Santos! Gostaria de agendar uma consulta jurídica.` },
+          { label: '📜 Documentos & DPAs', msg: 'Olá! Gostaria de esclarecer dúvidas sobre autenticação de documentos e DPAs.' },
+          { label: '💬 Esclarecer Questão Jurídica', msg: 'Olá! Gostaria de saber como o escritório pode ajudar no meu caso.' },
         ]
       : [
-          { label: '📋 Request Free Quote', msg: 'Hello! I would like to request a free quote for a project.' },
-          { label: '⏱️ Check Timelines & Rates', msg: 'Hello! I would like to check estimated timelines and terms.' },
-          { label: '💬 Speak with an Expert', msg: 'Hello! I have some questions about your services.' },
-        ],
+          { label: '⚖️ Book Legal Consultation', msg: `Hello Dra. Bebiana dos Santos! I would like to schedule a legal consultation.` },
+          { label: '📜 Document Authentication', msg: 'Hello! I have questions regarding authenticated private documents (DPAs).' },
+          { label: '💬 Legal Inquiry', msg: 'Hello! I would like to inquire about your legal counsel services.' },
+        ]),
     inputPlaceholder: isPt ? 'Escreva a sua mensagem...' : 'Type your message...',
     chatDirectBtn: isPt ? 'Abrir no WhatsApp' : 'Open in WhatsApp',
   };

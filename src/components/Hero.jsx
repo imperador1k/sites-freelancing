@@ -23,9 +23,9 @@ export default function Hero({ hero, whatsappUrl }) {
 
   const trustBadgeText = hero?.trustCard?.title || (isPt ? 'Qualidade & Rigor' : 'Quality & Rigor');
   const trustBadgeSub = hero?.trustCard?.desc || (isPt ? 'Acompanhamento dedicado' : 'Dedicated technical oversight');
-  const microItem1 = isPt ? 'Orçamento Gratuito' : 'Free Quotation';
-  const microItem2 = isPt ? 'Resposta em 24h' : '24h Response';
-  const microItem3 = isPt ? 'Cobertura Nacional' : 'Nationwide Service';
+  const microItem1 = hero?.microBullets?.[0] || (isPt ? 'Orçamento Gratuito' : 'Free Quotation');
+  const microItem2 = hero?.microBullets?.[1] || (isPt ? 'Resposta em 24h' : '24h Response');
+  const microItem3 = hero?.microBullets?.[2] || (isPt ? 'Cobertura Nacional' : 'Nationwide Service');
 
   return (
     <section

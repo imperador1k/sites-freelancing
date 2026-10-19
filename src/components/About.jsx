@@ -50,23 +50,23 @@ export default function About({ about }) {
           {/* Right decorative card */}
           <Reveal direction="right" delay={0.2}>
             <div className="relative">
-              <div className="bg-gradient-to-br from-dark to-dark-lighter rounded-3xl p-10 shadow-2xl">
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary rounded-2xl rotate-12 opacity-80" />
+              <div className="bg-white rounded-3xl p-8 sm:p-10 border border-black/8 shadow-xl shadow-black/5">
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/20 rounded-2xl rotate-12 pointer-events-none" />
                 <div className="relative z-10">
-                  <h3 className="font-heading font-bold text-3xl text-white mb-4">
+                  <h3 className="font-heading font-bold text-2xl sm:text-3xl text-dark mb-4">
                     {about.card.title}
                   </h3>
-                  <p className="text-white/70 leading-relaxed mb-8">
+                  <p className="text-warm-gray leading-relaxed mb-8">
                     {about.card.desc}
                   </p>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/10 rounded-xl p-5 backdrop-blur-sm border border-white/5">
-                      <div className="text-primary font-heading font-black text-3xl">{about.card.stat1.value}</div>
-                      <div className="text-white/70 text-sm mt-1">{about.card.stat1.label}</div>
+                    <div className="bg-cream rounded-xl p-4 sm:p-5 border border-black/5">
+                      <div className="text-primary font-heading font-black text-2xl sm:text-3xl">{about.card.stat1.value}</div>
+                      <div className="text-dark/70 font-heading font-medium text-xs sm:text-sm mt-1">{about.card.stat1.label}</div>
                     </div>
-                    <div className="bg-white/10 rounded-xl p-5 backdrop-blur-sm border border-white/5">
-                      <div className="text-primary font-heading font-black text-3xl">{about.card.stat2.value}</div>
-                      <div className="text-white/70 text-sm mt-1">{about.card.stat2.label}</div>
+                    <div className="bg-cream rounded-xl p-4 sm:p-5 border border-black/5">
+                      <div className="text-primary font-heading font-black text-2xl sm:text-3xl">{about.card.stat2.value}</div>
+                      <div className="text-dark/70 font-heading font-medium text-xs sm:text-sm mt-1">{about.card.stat2.label}</div>
                     </div>
                   </div>
                 </div>

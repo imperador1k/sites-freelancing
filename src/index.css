@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-primary: #E63B2E;
   --color-primary-dark: #C4291D;
-  --color-dark: #1A1A2E;
-  --color-dark-lighter: #2D2D44;
+  --color-dark: #14181F;
+  --color-dark-lighter: #1E2530;
   --color-steel: #E8ECF1;
   --color-steel-dark: #C5CDD8;
-  --color-warm-gray: #6B7280;
-  --color-cream: #F8F6F3;
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --color-warm-gray: #64748B;
+  --color-cream: #F8F7F4;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @layer base {

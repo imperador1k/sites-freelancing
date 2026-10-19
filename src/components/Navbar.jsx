@@ -87,18 +87,18 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-dark/90 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl'
-            : 'bg-dark/60 backdrop-blur-md border-b border-white/10 py-4 shadow-lg'
+            ? 'bg-white/90 backdrop-blur-xl border-b border-black/5 py-3 shadow-xs'
+            : 'bg-cream/80 backdrop-blur-md border-b border-black/5 py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 flex items-center justify-between">
           {/* Brand Logo with High Contrast */}
           <a href="#acasa" className="flex items-center gap-2.5 sm:gap-3 group min-w-0 flex-shrink-0">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-sm flex-shrink-0">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-xs border border-black/5 flex-shrink-0">
               <img src={company.logo} alt={`${company.name} Logo`} className="w-full h-full object-contain" />
             </div>
             <div className="min-w-0">
-              <span className="font-heading font-black text-base sm:text-xl text-white tracking-tight drop-shadow-sm whitespace-nowrap block">
+              <span className="font-heading font-black text-base sm:text-xl text-dark tracking-tight whitespace-nowrap block">
                 {company.name} {company.titleHighlight && <span className="text-primary">{company.titleHighlight}</span>}
               </span>
               <span className="hidden sm:block text-[10px] tracking-[0.15em] xl:tracking-[0.2em] text-primary font-bold uppercase -mt-0.5 truncate max-w-[200px] xl:max-w-none">
@@ -113,7 +113,7 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs xl:text-sm font-semibold text-white/85 hover:text-primary transition-colors duration-300 relative group drop-shadow-sm whitespace-nowrap flex-shrink-0"
+                className="text-xs xl:text-sm font-semibold text-dark/75 hover:text-primary transition-colors duration-300 relative group whitespace-nowrap flex-shrink-0"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -129,7 +129,7 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-xs xl:text-sm font-semibold px-4 xl:px-5 py-2 xl:py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-0.5 group whitespace-nowrap flex-shrink-0"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-xs xl:text-sm font-semibold px-4 xl:px-5 py-2 xl:py-2.5 rounded-full transition-all duration-300 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group whitespace-nowrap flex-shrink-0"
             >
               <span className="whitespace-nowrap">{ctaLabel}</span>
               <div className="w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-12 transition-transform duration-300 flex-shrink-0">
@@ -144,11 +144,11 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
               type="button"
               aria-label="Abrir Menu de Navegação"
               onClick={() => setIsMenuOpen(true)}
-              className="flex flex-col items-center justify-center w-11 h-11 rounded-xl bg-white/10 hover:bg-white/15 transition-colors p-2.5 gap-1.5 active:scale-95"
+              className="flex flex-col items-center justify-center w-11 h-11 rounded-xl bg-black/5 hover:bg-black/10 transition-colors p-2.5 gap-1.5 active:scale-95"
             >
-              <span className="w-6 h-0.5 bg-white rounded-full transition-transform" />
+              <span className="w-6 h-0.5 bg-dark rounded-full transition-transform" />
               <span className="w-4 h-0.5 bg-primary self-end rounded-full transition-transform" />
-              <span className="w-6 h-0.5 bg-white rounded-full transition-transform" />
+              <span className="w-6 h-0.5 bg-dark rounded-full transition-transform" />
             </button>
           </div>
         </div>
@@ -162,16 +162,16 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-[100] h-[100dvh] w-screen bg-dark/98 backdrop-blur-2xl text-white flex flex-col justify-between p-6 sm:p-8 lg:hidden overflow-hidden overscroll-none select-none"
+            className="fixed inset-0 z-[100] h-[100dvh] w-screen bg-cream/98 backdrop-blur-2xl text-dark flex flex-col justify-between p-6 sm:p-8 lg:hidden overflow-hidden overscroll-none select-none"
           >
             {/* Top Bar with Brand, Language Switcher & Close Button */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-5 flex-shrink-0">
+            <div className="flex items-center justify-between border-b border-black/10 pb-5 flex-shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-sm flex-shrink-0">
+                <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-xl bg-white p-1 shadow-xs border border-black/5 flex-shrink-0">
                   <img src={company.logo} alt={company.name} className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <span className="font-heading font-black text-lg text-white tracking-tight">
+                  <span className="font-heading font-black text-lg text-dark tracking-tight">
                     {company.name} {company.titleHighlight && <span className="text-primary">{company.titleHighlight}</span>}
                   </span>
                   <span className="block text-[9px] tracking-[0.2em] text-primary font-bold uppercase">{company.tagline}</span>
@@ -184,7 +184,7 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
                   type="button"
                   aria-label="Fechar Menu"
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 flex items-center justify-center text-white transition-all"
+                  className="w-11 h-11 rounded-full bg-black/5 hover:bg-black/10 active:scale-90 flex items-center justify-center text-dark transition-all"
                 >
                   <FiX className="text-2xl" />
                 </button>
@@ -202,10 +202,10 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
                   type="button"
                   variants={menuItemVariants}
                   onClick={() => handleNavClick(link.href)}
-                  className="w-full text-left font-heading font-black text-2xl sm:text-3xl text-white/90 hover:text-primary active:text-primary transition-colors flex items-center justify-between group py-1.5 cursor-pointer"
+                  className="w-full text-left font-heading font-black text-2xl sm:text-3xl text-dark/90 hover:text-primary active:text-primary transition-colors flex items-center justify-between group py-1.5 cursor-pointer"
                 >
                   <span>{link.label}</span>
-                  <span className="text-xs font-semibold text-white/30 group-hover:text-primary group-hover:translate-x-1 transition-all">
+                  <span className="text-xs font-semibold text-dark/30 group-hover:text-primary group-hover:translate-x-1 transition-all">
                     0{idx + 1}
                   </span>
                 </motion.button>
@@ -213,7 +213,7 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
             </div>
 
             {/* Bottom Conversion Card & Contacts */}
-            <motion.div variants={menuItemVariants} className="space-y-3 pt-5 border-t border-white/10 flex-shrink-0">
+            <motion.div variants={menuItemVariants} className="space-y-3 pt-5 border-t border-black/10 flex-shrink-0">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -228,7 +228,7 @@ export default function Navbar({ company, navLinks, whatsappUrl }) {
                 <FiArrowRight className="text-base" />
               </a>
 
-              <p className="text-[11px] text-white/50 text-center">
+              <p className="text-[11px] text-warm-gray text-center">
                 {mobileNotice}
               </p>
             </motion.div>

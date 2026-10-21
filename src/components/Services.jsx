@@ -6,18 +6,18 @@ import { useLanguage } from '../context/LanguageContext';
 /**
  * Services Grid Section showing contractor specialties
  */
-export default function Services({ services, whatsappUrl }) {
+export default function Services({ services, servicesHeader, whatsappUrl }) {
   const { lang } = useLanguage();
 
   const isPt = lang === 'pt';
-  const badge = isPt ? 'O Que Fazemos' : 'Our Specialties';
-  const titlePre = isPt ? 'Serviços de' : 'Excellence in';
-  const titleHighlight = isPt ? 'Excelência' : 'Construction';
-  const titlePost = isPt ? 'Para Qualquer Obra' : 'For Any Project Scale';
-  const subtitle = isPt
+  const badge = servicesHeader?.badge || (isPt ? 'O Que Fazemos' : 'Our Specialties');
+  const titlePre = servicesHeader?.titlePre || (isPt ? 'Serviços de' : 'Excellence in');
+  const titleHighlight = servicesHeader?.titleHighlight || (isPt ? 'Excelência' : 'Construction');
+  const titlePost = servicesHeader?.titlePost || (isPt ? 'Para Qualquer Obra' : 'For Any Project Scale');
+  const subtitle = servicesHeader?.subtitle || (isPt
     ? 'Oferecemos soluções completas em construção civil, reabilitação e remodelações com garantia de rigor e satisfação.'
-    : 'We deliver turnkey civil construction, building restoration, and luxury renovations with strict standards.';
-  const ctaLabel = isPt ? 'Pedir Orçamento' : 'Request Quote';
+    : 'We deliver turnkey civil construction, building restoration, and luxury renovations with strict standards.');
+  const ctaLabel = servicesHeader?.ctaLabel || (isPt ? 'Pedir Orçamento' : 'Request Quote');
 
   return (
     <section id="servicos" className="py-24 md:py-32 bg-steel relative overflow-hidden">

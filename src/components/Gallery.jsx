@@ -6,17 +6,17 @@ import { useLanguage } from '../context/LanguageContext';
 /**
  * Gallery Section showcasing recent real works/portfolio
  */
-export default function Gallery({ gallery, whatsappUrl }) {
+export default function Gallery({ gallery, galleryHeader, whatsappUrl }) {
   const { lang } = useLanguage();
 
   const isPt = lang === 'pt';
-  const badge = isPt ? 'Portfólio Real' : 'Real Portfolio';
-  const titlePre = isPt ? 'Galeria de' : 'Recent Works';
-  const titleHighlight = isPt ? 'Obras Recentes' : 'Gallery';
-  const subtitle = isPt
+  const badge = galleryHeader?.badge || (isPt ? 'Portfólio Real' : 'Real Portfolio');
+  const titlePre = galleryHeader?.titlePre || (isPt ? 'Galeria de' : 'Recent Works');
+  const titleHighlight = galleryHeader?.titleHighlight || (isPt ? 'Obras Recentes' : 'Gallery');
+  const subtitle = galleryHeader?.subtitle || (isPt
     ? 'Conheça alguns dos nossos trabalhos executados com materiais certificados, acabamentos impecáveis e clientes satisfeitos.'
-    : 'Discover our recent construction and rehabilitation projects with verified structural quality and premium finishes.';
-  const quotePrompt = isPt ? 'Quero uma obra semelhante' : 'Inquire about similar work';
+    : 'Discover our recent construction and rehabilitation projects with verified structural quality and premium finishes.');
+  const quotePrompt = galleryHeader?.quotePrompt || (isPt ? 'Quero uma obra semelhante' : 'Inquire about similar work');
 
   return (
     <section id="obras" className="py-24 md:py-32 bg-white relative overflow-hidden border-t border-black/5">

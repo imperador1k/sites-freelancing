@@ -45,10 +45,10 @@ function MainLayout() {
       <Hero hero={hero} whatsappUrl={whatsappUrl} />
       <About about={about} />
       <Stats stats={stats} />
-      <Services services={services} whatsappUrl={whatsappUrl} />
-      <Gallery gallery={gallery} whatsappUrl={whatsappUrl} />
+      <Services services={services} servicesHeader={data?.servicesHeader} whatsappUrl={whatsappUrl} />
+      <Gallery gallery={gallery} galleryHeader={data?.galleryHeader} whatsappUrl={whatsappUrl} />
       <Process steps={processSteps} />
-      <Contact contact={contact} />
+      <Contact contact={contact} contactHeader={data?.contactHeader} />
       <FloatingWhatsApp whatsappUrl={whatsappUrl} company={company} />
       <Footer
         company={company}

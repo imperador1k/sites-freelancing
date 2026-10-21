@@ -8,7 +8,7 @@ import { useLanguage } from '../context/LanguageContext';
  * Contact Section with interactive quote form and direct business info
  * Fully adapts dynamically to the active language (PT/EN).
  */
-export default function Contact({ contact = {} }) {
+export default function Contact({ contact = {}, contactHeader = {} }) {
   const { lang } = useLanguage();
   const safeContact = {
     phone: '+351 913 450 515',
@@ -23,20 +23,20 @@ export default function Contact({ contact = {} }) {
 
   const t = {
     pt: {
-      badge: 'Fale Connosco',
-      title: 'Peça o Seu',
-      titleHighlight: 'Orçamento Gratuito',
-      desc: 'Tem um projeto em mente? Contacte-nos hoje mesmo por mensagem ou telefone e receba uma resposta rápida.',
-      nameLabel: 'O Seu Nome',
-      namePlaceholder: 'ex: João Silva',
-      phoneLabel: 'Telefone',
-      phonePlaceholder: 'ex: 912 345 678',
-      emailLabel: 'Email',
-      emailPlaceholder: 'ex: joao@email.com',
-      messageLabel: 'Descrição do Projeto ou Obra',
-      messagePlaceholder: 'Indique a localização, tipo de intervenção ou quaisquer detalhes relevantes...',
-      submitBtn: 'Enviar Pedido de Orçamento',
-      sentSuccess: 'Pedido Enviado com Sucesso!',
+      badge: contactHeader?.badge || 'Fale Connosco',
+      title: contactHeader?.title || 'Peça o Seu',
+      titleHighlight: contactHeader?.titleHighlight || 'Orçamento Gratuito',
+      desc: contactHeader?.desc || 'Tem um projeto em mente? Contacte-nos hoje mesmo por mensagem ou telefone e receba uma resposta rápida.',
+      nameLabel: contactHeader?.nameLabel || 'O Seu Nome',
+      namePlaceholder: contactHeader?.namePlaceholder || 'ex: João Silva',
+      phoneLabel: contactHeader?.phoneLabel || 'Telefone',
+      phonePlaceholder: contactHeader?.phonePlaceholder || 'ex: 912 345 678',
+      emailLabel: contactHeader?.emailLabel || 'Email',
+      emailPlaceholder: contactHeader?.emailPlaceholder || 'ex: joao@email.com',
+      messageLabel: contactHeader?.messageLabel || 'Descrição do Projeto ou Obra',
+      messagePlaceholder: contactHeader?.messagePlaceholder || 'Indique a localização, tipo de intervenção ou quaisquer detalhes relevantes...',
+      submitBtn: contactHeader?.submitBtn || 'Enviar Pedido de Orçamento',
+      sentSuccess: contactHeader?.sentSuccess || 'Pedido Enviado com Sucesso!',
       phoneTitle: 'Telefone',
       emailTitle: 'Email',
       locationTitle: 'Localização',
